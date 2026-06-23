@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Logs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CoffeeMachine.Application\CoffeeMachine.Application.csproj" />
     <ProjectReference Include="..\CoffeeMachine.Infrastructure\CoffeeMachine.Infrastructure.csproj" />
   </ItemGroup>
