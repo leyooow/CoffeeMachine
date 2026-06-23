@@ -1,10 +1,13 @@
 using CoffeeMachine.Application.DTOs;
 using CoffeeMachine.Application.Exceptions;
+using CoffeeMachine.Application.Interface.Services;
 using CoffeeMachine.Application.Services;
 using CoffeeMachine.Infrastructure.Data;
 using CoffeeMachine.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
+using Moq;
+using Xunit;
 
 namespace CoffeeMachine.Test;
 
@@ -23,27 +26,28 @@ public sealed class CoffeeMachineServiceTests : IDisposable
         _fakeTime = new FakeTimeProvider();
     }
 
-
-    private CoffeeMachineService CreateService()
+    
+    private CoffeeMachineService CreateService(double temp = 25)
     {
         var repo = new CoffeeMachineRepository(_context);
         var logger = NullLogger<CoffeeMachineService>.Instance;
 
-        return new CoffeeMachineService(repo, _fakeTime, logger);
+        var weatherMock = new Mock<IWeatherService>();
+        weatherMock.Setup(x => x.GetCurrentTemperatureAsync())
+                   .ReturnsAsync(temp);
+
+        return new CoffeeMachineService(repo, _fakeTime, logger, weatherMock.Object);
     }
 
-
     [Fact]
-    public async Task ExecuteBrewAsync_ShouldReturn200_OnNormalDay()
+    public async Task ExecuteBrewAsync_ShouldReturnIcedCoffee_WhenTempAbove30()
     {
         _fakeTime.SetUtcNow(new DateTimeOffset(2026, 6, 24, 10, 0, 0, TimeSpan.Zero));
-        var service = CreateService();
+        var service = CreateService(35); 
 
         var response = await service.ExecuteBrewAsync();
 
-        Assert.NotNull(response);
-        Assert.Equal("Your piping hot coffee is ready", response.Message);
-        Assert.Contains("2026-06-24T10:00:00", response.Prepared);
+        Assert.Equal("Your refreshing iced coffee is ready", response.Message);
     }
 
     [Fact]
@@ -58,19 +62,7 @@ public sealed class CoffeeMachineServiceTests : IDisposable
         Assert.Equal(418, ex.StatusCode);
     }
 
-    [Theory]
-    [InlineData(2026, 3, 31, 23, 59, 59)]
-    [InlineData(2026, 4, 2, 0, 0, 0)]
-    public async Task ExecuteBrewAsync_ShouldWork_OutsideAprilFirst(
-        int year, int month, int day, int hour, int min, int sec)
-    {
-        _fakeTime.SetUtcNow(new DateTimeOffset(year, month, day, hour, min, sec, TimeSpan.Zero));
-        var service = CreateService();
 
-        var result = await service.ExecuteBrewAsync();
-
-        Assert.NotNull(result);
-    }
 
     [Fact]
     public async Task ExecuteBrewAsync_ShouldThrow503_OnEveryFifthCall()

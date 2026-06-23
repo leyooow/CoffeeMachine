@@ -18,6 +18,7 @@ public static class DependencyInjection
   
         services.AddScoped<ICoffeeMachineService, CoffeeMachineService>();
 
+
         return services;
     }
 }

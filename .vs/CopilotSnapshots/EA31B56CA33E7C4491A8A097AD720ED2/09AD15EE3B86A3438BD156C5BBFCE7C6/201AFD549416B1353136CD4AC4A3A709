@@ -69,10 +69,9 @@ public sealed class CoffeeMachineService : ICoffeeMachineService
             ? "Your refreshing iced coffee is ready"
             : "Your piping hot coffee is ready";
 
-        // Return the prepared timestamp in UTC to make behaviour deterministic for tests
         return new BrewCoffeeResponseDto(
             message,
-            utcNow.ToString("yyyy-MM-ddTHH:mm:ss")
+            now.ToString("yyyy-MM-ddTHH:mm:sszzz")
         );
     }
 
