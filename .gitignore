@@ -1,0 +1,11 @@
+/CoffeeMachine.Server/.vs
+/CoffeeMachine.Server/CoffeeMachine.Application/obj
+/CoffeeMachine.Server/CoffeeMachine.Domain/bin
+/CoffeeMachine.Server/CoffeeMachine.Domain/obj
+/CoffeeMachine.Server/CoffeeMachine.Infrastructure/obj
+/CoffeeMachine.Server/CoffeeMachine.Server/obj
+/CoffeeMachine.Server/CoffeeMachine.Test/obj
+/CoffeeMachine.Server/CoffeeMachine.Infrastructure/bin
+/CoffeeMachine.Server/CoffeeMachine.Server/bin
+/CoffeeMachine.Server/CoffeeMachine.Test/bin
+/CoffeeMachine.Server/CoffeeMachine.Application/bin

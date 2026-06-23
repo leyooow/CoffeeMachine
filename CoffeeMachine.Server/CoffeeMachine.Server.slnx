@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="CoffeeMachine.Application/CoffeeMachine.Application.csproj" />
+  <Project Path="CoffeeMachine.Domain/CoffeeMachine.Domain.csproj" />
+  <Project Path="CoffeeMachine.Infrastructure/CoffeeMachine.Infrastructure.csproj" />
+  <Project Path="CoffeeMachine.Server/CoffeeMachine.API.csproj" />
+  <Project Path="CoffeeMachine.Test/CoffeeMachine.Test.csproj" />
+</Solution>
