@@ -9,3 +9,6 @@
 /CoffeeMachine.Server/CoffeeMachine.Server/bin
 /CoffeeMachine.Server/CoffeeMachine.Test/bin
 /CoffeeMachine.Server/CoffeeMachine.Application/bin
+/CoffeeMachine.Server/CoffeeMachine.Server/coffee.db
+/CoffeeMachine.Server/CoffeeMachine.Server/coffee.db-shm
+/CoffeeMachine.Server/CoffeeMachine.Server/coffee.db-wal
