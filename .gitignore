@@ -12,3 +12,15 @@
 /CoffeeMachine.Server/CoffeeMachine.Server/coffee.db
 /CoffeeMachine.Server/CoffeeMachine.Server/coffee.db-shm
 /CoffeeMachine.Server/CoffeeMachine.Server/coffee.db-wal
+/CoffeeMachine.API/CoffeeMachine.API/bin
+/CoffeeMachine.API/CoffeeMachine.API/obj
+/CoffeeMachine.API/CoffeeMachine.Application/bin
+/CoffeeMachine.API/CoffeeMachine.Application/obj
+/CoffeeMachine.API/CoffeeMachine.Domain/obj
+/CoffeeMachine.API/CoffeeMachine.Infrastructure/obj
+/CoffeeMachine.API/CoffeeMachine.Test/bin
+/CoffeeMachine.API/CoffeeMachine.Test/obj
+/CoffeeMachine.API/CoffeeMachine.Infrastructure/bin
+/CoffeeMachine.API/CoffeeMachine.Domain/bin
+/CoffeeMachine.API/.vs
+CoffeeMachine.API/CoffeeMachine.API/coffee.db
