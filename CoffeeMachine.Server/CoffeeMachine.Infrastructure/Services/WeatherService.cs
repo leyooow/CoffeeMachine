@@ -14,15 +14,20 @@ public sealed class WeatherService : IWeatherService
 
     public async Task<double> GetCurrentTemperatureAsync()
     {
+        // My current location longitude & latitude
         var response = await _httpClient.GetFromJsonAsync<WeatherResponse>(
             "https://api.open-meteo.com/v1/forecast?latitude=14.6&longitude=120.97&current_weather=true");
 
-        return response?.CurrentWeather?.Temperature ?? 25;
+
+        // Uncomment for iced coffee
+        //response.Current_Weather.Temperature = 35;
+
+        return response?.Current_Weather?.Temperature ?? 25;
     }
 
     private class WeatherResponse
     {
-        public CurrentWeatherData? CurrentWeather { get; set; }
+        public CurrentWeatherData? Current_Weather { get; set; }
 
         public class CurrentWeatherData
         {
